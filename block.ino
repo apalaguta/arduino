@@ -37,15 +37,15 @@ void setup() {
 void loop() {
 
   digitalWrite(datchiki, HIGH);
-  float t = dht.readTemperature();
-    if(t>25 and !otkrito){
+  int temp = dht.readTemperature();
+    if(temp>25 and !otkrito){
         otkrito = true;
        for (int angle = 0; angle <= 90; angle++) {
         servo1.write(angle); 
         delay(20); 
     }
     }
-    else if(t<20 and otkrito){
+    else if(temp<20 and otkrito){
       otkrito = false;
        for (int angle = 90; angle >= 0; angle--) {
       servo1.write(angle); // сообщаем микро серво угол поворота
