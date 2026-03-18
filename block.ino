@@ -1,3 +1,6 @@
+
+
+
 #include <Servo.h>
 #include <DHT.h>   
 DHT dht(7, DHT11); 
@@ -16,6 +19,7 @@ bool kran2=false;
 
 
 Servo servo1;
+
 
 void setup() {
   servo1.attach(10);
@@ -37,18 +41,18 @@ void setup() {
 void loop() {
 
   digitalWrite(datchiki, HIGH);
-  int temp = dht.readTemperature();
-    if(temp>25 and !otkrito){
+  float t = dht.readTemperature();
+    if(t>25 and !otkrito){
         otkrito = true;
-       for (int angle = 0; angle <= 90; angle++) {
-        servo1.write(angle); 
+       for (int pov = 0; pov <= 90; pov++) {
+        servo1.write(pov); 
         delay(20); 
     }
     }
-    else if(temp<20 and otkrito){
+    else if(t<20 and otkrito){
       otkrito = false;
-       for (int angle = 90; angle >= 0; angle--) {
-      servo1.write(angle); // сообщаем микро серво угол поворота
+       for (int pov = 90; pov >= 0; pov--) {
+      servo1.write(pov); 
       delay(20); 
        }
       otkrito=true;
@@ -80,3 +84,4 @@ vlazn2=analogRead(A3);
 
 
   }
+
