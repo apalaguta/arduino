@@ -98,27 +98,22 @@ vlazn2=analogRead(perv_vlaz2);
 
 delay(1000);
   }
-
-  void peredacha{int vlaz_1, vlazn_2, temp}{ 
-// функция передача данных
-    if vlaz_1 > 400{
-      procent_1 = 0
+// функция для передачи данных
+  void peredacha(int vlazn_1, int vlazn_2, int temper){
+    int procent1 = 0;
+     int procent2 = 0;
+    if (vlazn_1 < 200){
+     int procent1 = 99;
     }
-    else if vlazn_1 < 200{
-      procent_1 = 99
+    else if (vlazn1 < 400){
+     int procent1 = int((vlazn_1 - 200) / 4);
     }
-    else{
-      procent_1 = (vlazn_1 - 200) // 4
+   if (vlazn_2 < 200){
+     int procent2 = 99;
     }
-   if vlaz_2 > 400{
-      procent_2 = 0
+    else if (vlazn2 < 400){
+     int procent2 = int((vlazn_2 - 200) / 4);
     }
-    else if vlazn_2 < 200{
-      procent_2 = 99
-    }
-    else{
-      procent_2 = (vlazn_2 - 200) // 4
-    }
-    dannie = temp * 10000 + procent_1 * 100 + procent_2 //подготовка единого числа под передачу
+   int dannie = temper * 10000 + procent1 * 100 + procent2 ; // подготовка данных для передачи
     Serial.println(dannie);   
   }
