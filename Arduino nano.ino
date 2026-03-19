@@ -95,7 +95,7 @@ vlazn2=analogRead(perv_vlaz2);
     digitalWrite(vtor_kran, HIGH);
      kran2=false;
   }
-
+peredacha(vlazn1,vlazn2,int(t));
 delay(1000);
   }
 // функция для передачи данных
